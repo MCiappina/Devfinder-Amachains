@@ -2,45 +2,26 @@
   <div id="app">
     <Header />
     <SearchBars />
+    <CardList />
   </div>
 </template>
 
 <script>
 import Header from './components/Header';
 import SearchBars from './components/SearchBars';
+import CardList from './components/CardList';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
-  data() {
-    cards: [
-      {
-      name: 'Cerjo',
-      image: './assets/placeholder_image.png',
-      location: 'São Paulo',
-      bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      followers: 20,
-      repositories: 132 
-    },
-    {
-      name: 'Dani',
-      image: './assets/placeholder_image.png',
-      location: 'São Paulo',
-      bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      followers: 20,
-      repositories: 132 
-    },
-    {
-      name: 'Vito',
-      image: './assets/placeholder_image.png',
-      location: 'Londres',
-      bio: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      followers: 20,
-      repositories: 132 
-    },
-    ]
-  },
   components: {
-    Header, SearchBars
+    Header, SearchBars, CardList
+  },
+  methods: {
+    ...mapActions(['fetchCards'])
+  },
+  created() {
+    this.fetchCards();
   }
     
 }
