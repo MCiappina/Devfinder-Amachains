@@ -1,30 +1,19 @@
 <template>
   <div id="app">
-    <Header />
-    <SearchBars />
-    <CardList />
+    <Home />
   </div>
 </template>
 
 <script>
-import Header from './components/Header';
-import SearchBars from './components/SearchBars';
-import CardList from './components/CardList';
-import { mapActions } from 'vuex';
+import Home from "./components/Home";
+
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Header, SearchBars, CardList
+    Home
   },
-  methods: {
-    ...mapActions(['fetchCards'])
-  },
-  created() {
-    this.fetchCards();
-  }
-    
-}
+};
 </script>
 
 <style>
