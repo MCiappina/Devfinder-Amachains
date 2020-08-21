@@ -39,14 +39,15 @@ export default {
     fetchLogins(language, location) {
       axios
         .get(
-          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=desc&page=${this.page}&per_page=8`,
+          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=asc&page=${this.page}&per_page=8`,
           {
             headers: {
-              Authorization: "7c213fed160511d20ec377663fef274c6073ed2e",
+              Authorization: "fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
             },
           }
         )
         .then((res) => {
+          console.log(res.data);
           this.searchResults = res.data.total_count;
           this.loginList = res.data.items.map((item) => {
             return { login: item.login, id: item.id };
@@ -58,7 +59,7 @@ export default {
         `https://api.github.com/users/${login}`,
         {
           headers: {
-            Authorization: "7c213fed160511d20ec377663fef274c6073ed2e",
+            Authorization: "fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
           },
         }
       );
@@ -77,7 +78,7 @@ export default {
     },
     resetPage() {
       this.page = 1;
-    }
+    },
   },
 };
 </script>
