@@ -68,7 +68,7 @@ export default {
 
     // Pagination methods
     nextPage() {
-      const maxPages = this.searchResults / 8 + 1;
+      const maxPages = this.searchResults / 8;
       if (this.page < maxPages) this.page++;
     },
     previousPage() {
