@@ -10,8 +10,9 @@
         :searchResults="searchResults"
         :nextPage="nextPage"
         :previousPage="previousPage"
+        :resetPage="resetPage"
       />
-      <CardList :cards="cards" />
+      <CardList :loginList="loginList" :setCardInfo="setCardInfo" />
     </div>
   </div>
 </template>
@@ -26,8 +27,6 @@ export default {
   data() {
     return {
       loginList: [],
-      cardList: [],
-      cards: [],
       page: 1,
       searchResults: undefined,
     };
@@ -40,60 +39,35 @@ export default {
     fetchLogins(language, location) {
       axios
         .get(
-          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=asc&page=${this.page}&per_page=8`,
+          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=desc&page=${this.page}&per_page=8`,
           {
             headers: {
-              Authorization: "991d05a85bc0be566cc6819f91afe5c2b3613fbd",
+              Authorization: "7c213fed160511d20ec377663fef274c6073ed2e",
             },
           }
         )
         .then((res) => {
-          console.log(res.data);
           this.searchResults = res.data.total_count;
-          this.loginList = res.data.items.map((item) => item.login);
-          console.log(this.loginList);
-        })
-        .catch((err) => console.log(err))
-        .then(() => this.setCardInfo())
-        .then(
-          () =>
-            (this.cards = this.cardList.sort(
-              (a, b) => b.followers - a.followers
-            ))
-        );
+          this.loginList = res.data.items.map((item) => {
+            return { login: item.login, id: item.id };
+          });
+        });
     },
-    setCardInfo() {
-      let newCardsArray = [];
-      this.cards = [];
-      this.cardList = [];
-      // Zera o state de cards e itera o array loginList fazendo um GET request e criando o objeto para o array cards
-      this.loginList.forEach((login) =>
-        axios
-          .get(`https://api.github.com/users/${login}`, {
-            headers: {
-              Authorization: "991d05a85bc0be566cc6819f91afe5c2b3613fbd",
-            },
-          })
-          .then((res) => {
-            const user = res.data;
-            const cardObject = {
-              id: user.id,
-              name: user.name,
-              avatar: user.avatar_url,
-              bio: user.bio,
-              followers: user.followers,
-              repositories: user.public_repos,
-            };
-            newCardsArray.push(cardObject);
-          })
+    async setCardInfo(login) {
+      const response = await axios.get(
+        `https://api.github.com/users/${login}`,
+        {
+          headers: {
+            Authorization: "7c213fed160511d20ec377663fef274c6073ed2e",
+          },
+        }
       );
-      // Por causa da assincronicidade, alguns objetos, mesmo com mais seguidores, acabam ficando atrás na ordem do array
-      // invoco um sort() em ordem descendente
-      this.cardList = newCardsArray;
+      return response.data;
     },
+
     // Pagination methods
     nextPage() {
-      const maxPages = (this.searchResults % 8) + 1;
+      const maxPages = this.searchResults / 8 + 1;
       if (this.page < maxPages) this.page++;
     },
     previousPage() {
@@ -101,6 +75,9 @@ export default {
         this.page--;
       }
     },
+    resetPage() {
+      this.page = 1;
+    }
   },
 };
 </script>

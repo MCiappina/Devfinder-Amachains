@@ -25,6 +25,7 @@ export default {
   methods: {
     onSubmit(e) {
       e.preventDefault();
+      this.resetPage();
       this.fetchLogins(this.language, this.location);
     },
     handleNext() {
@@ -36,7 +37,7 @@ export default {
       this.fetchLogins(this.language, this.location);
     },
   },
-  props: ["fetchLogins", "searchResults", "nextPage", "previousPage"],
+  props: ["fetchLogins", "searchResults", "nextPage", "previousPage", "resetPage"],
 };
 </script>
 <style>

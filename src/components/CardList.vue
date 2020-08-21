@@ -1,21 +1,17 @@
 <template>
   <div class="container">
     <h1>CardList</h1>    
-    <div class="card" v-for="card in cards" :key="card.id">
-        <p>{{card.name}}</p>
-        <img :src="card.avatar" />
-        <span>{{card.bio}}</span>
-        <h5>{{card.followers}} Followers</h5>
-        <h5>{{card.repositories}} Repositories</h5>
-    </div>
+    <Card v-for="login in loginList" :key='login.id' :setCardInfo="setCardInfo" :username="login.login" />
   </div>
 </template>
 
 <script>
+import Card from './Card';
 
 export default {
   name: "CardList",
-  props: ['cards'],
+  components: {Card},
+  props: ['loginList', 'setCardInfo'],
 };
 </script>
 
