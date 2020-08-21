@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <h1>CardList</h1>
-    <div class="card" v-for="card in allCards" :key="card.id">
+    <h1>CardList</h1>    
+    <div class="card" v-for="card in cards" :key="card.id">
         <p>{{card.name}}</p>
-        <img :src="card.image" />
+        <img :src="card.avatar" />
         <span>{{card.bio}}</span>
         <h5>{{card.followers}} Followers</h5>
         <h5>{{card.repositories}} Repositories</h5>
@@ -12,11 +12,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
   name: "CardList",
-  computed: mapGetters(['allCards'])
+  props: ['cards'],
 };
 </script>
 
