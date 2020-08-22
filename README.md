@@ -16,7 +16,7 @@ To run this project:
  7. Inside the ".env" file type:
  8. ```VUE_APP_GITHUB_TOKEN="token (TOKEN CREATED IN STEP 4)"```
  9. Save the changes.
- 10. Finally run ```npm start```.
+ 10. Finally run ```npm run serve```.
  
  ## Technologies Used
 
