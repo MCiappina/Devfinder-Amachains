@@ -13,7 +13,7 @@ To run this project:
  4. Create a Github personal access token following these instructions: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token.
  5. In the root folder of the project, create a file named ".env".
  6. Inside the ".env" file type:
- 7.```VUE_APP_GITHUB_TOKEN="token (TOKEN CREATED IN STEP 4)"```
+ 7. ```VUE_APP_GITHUB_TOKEN="token (TOKEN CREATED IN STEP 4)"```
  8. Save the changes.
  9. Finally run ```npm start```.
  
