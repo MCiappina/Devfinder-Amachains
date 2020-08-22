@@ -46,13 +46,14 @@ a {
   flex-direction: column;
   align-items: center;
   margin: 20px;
-  background-color: #ffffff;
+  background: #F5F5F5;
   width: 13rem;
-  height: 20rem;
+  height: 24rem;
   text-decoration: none;
+  border-radius: 4px;
+  color: #333333; 
 }
 .card-header {
-  color: #333333; 
   padding: 1rem;
   font-size: 1rem;
 }
@@ -60,10 +61,16 @@ a {
   width: 100%;
   height: auto;
 }
+.card-location {
+  font-size: 1.2rem;
+  padding: 4px;
+}
 .card-bio {
-  color: #333333; 
-  padding: 1rem;
-  font-size: 1rem;
+  padding: 10px;
+  font-size: 0.8rem;
+}
+.card-info {
+  padding: 4px;
 }
 img {
   width: 100%;
