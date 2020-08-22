@@ -20,7 +20,8 @@ export default {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 @media only screen and (max-width: 845px){
