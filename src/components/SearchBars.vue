@@ -80,6 +80,7 @@ input[type="submit"] {
   text-align: center;
   padding: 0.5rem;
   margin: 0.4rem 0;
+  cursor: pointer;
 }
 button {
   background: #ffffff;
@@ -89,5 +90,13 @@ button {
   color: #0275D8;
   margin: 1rem 1rem 0.4rem 0;
   padding: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+}
+button:hover {
+  color: #ffffff;
+  background: #0275D8;
 }
 </style>

@@ -90,6 +90,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 90vw;
 }
 .header {
   margin-top: 10vh;
