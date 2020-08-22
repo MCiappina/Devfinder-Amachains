@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="main-container">
     <div class="header">
       <h1>Devfinder</h1>
       <p>Find relevant developers from Github</p>
@@ -84,13 +84,13 @@ export default {
 </script>
 
 <style scoped>
-.container{
+.main-container{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 90vw;
+  width: 100%;
 }
 .header {
   margin-top: 10vh;

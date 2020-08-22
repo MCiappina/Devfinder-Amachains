@@ -27,9 +27,14 @@ export default {
 
 <style scoped>
 .card {
-    padding: 20px;
     margin: 20px;
     background-color: #ffffff;
     color: #333333;
+    width: 7rem;
+    height: 15rem;
+}
+img {
+    max-width: 100px;
+    height: auto;
 }
 </style>

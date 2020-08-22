@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    <h1>CardList</h1>    
+  <div class="container">   
     <Card v-for="login in loginList" :key='login.id' :setCardInfo="setCardInfo" :username="login.login" />
   </div>
 </template>
@@ -19,14 +18,9 @@ export default {
 .container {
     width: 50%;
     margin: 0 auto;
-    padding: 20px;
-}
-.card {
-    margin: 10px;
-    padding: 10px;
-}
-img {
-    max-width: 100px;
-    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 </style>

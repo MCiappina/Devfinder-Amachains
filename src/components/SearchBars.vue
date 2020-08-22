@@ -68,6 +68,7 @@ input[type="text"] {
   font-weight: bold;
   font-size: 0.8rem;
   margin: 0.4rem 0;
+  outline: none;
 }
 input[type="submit"] {
   background: #0275d8;
@@ -81,12 +82,13 @@ input[type="submit"] {
   padding: 0.5rem;
   margin: 0.4rem 0;
   cursor: pointer;
+  outline: none;
 }
 button {
   background: #ffffff;
   border: 1px solid #eceeef;
   box-sizing: border-box;
-  border-radius: 15px;
+  border-radius: 10px;
   color: #0275D8;
   margin: 1rem 1rem 0.4rem 0;
   padding: 0.4rem;
