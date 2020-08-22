@@ -1,6 +1,7 @@
 <template>
   <div class="main-container">
     <div class="header">
+      <img class="logo" src="../assets/searchImage.svg" />
       <h1>Devfinder</h1>
       <p>Find relevant developers from Github</p>
     </div>
@@ -21,8 +22,6 @@
 import CardList from "./CardList";
 import SearchBars from "./SearchBars";
 import axios from "axios";
-
-const GITHUB_token = process.env.VUE_APP_GITHUB_TOKEN;
 
 export default {
   name: "Home",
@@ -45,7 +44,7 @@ export default {
           `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=desc&page=${this.page}&per_page=8`,
           {
             headers: {
-              "Authorization": GITHUB_token,
+              "Authorization": process.env.VUE_APP_GITHUB_TOKEN,
             },
           }
         )
@@ -54,14 +53,14 @@ export default {
           this.loginList = res.data.items.map((item) => {
             return { login: item.login, id: item.id };
           });
-        });
+        }).catch(err => console.log(err));
     },
     async setCardInfo(login) {
       const response = await axios.get(
         `https://api.github.com/users/${login}`,
         {
           headers: {
-            "Authorization": GITHUB_token,
+            "Authorization": process.env.VUE_APP_GITHUB_TOKEN,
           },
         }
       );
@@ -93,8 +92,11 @@ export default {
   align-items: center;
   height: 100%;
   width: 100%;
-  background: #333333;
+  background-color: #333333;
   color: #ffffff;
+}
+.logo {
+  height: 100px;
 }
 .header {
   margin-top: 20vh;
@@ -103,7 +105,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 10vh;
+  height: 20vh;
 }
 .header h1 {
   font-size: 2rem;

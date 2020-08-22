@@ -80,7 +80,7 @@ input[type="submit"] {
   align-self: center;
   text-align: center;
   padding: 0.5rem;
-  margin: 0.4rem 0;
+  margin: 0.8rem 0;
   cursor: pointer;
   outline: none;
 }
