@@ -40,10 +40,10 @@ export default {
     fetchLogins(language, location) {
       axios
         .get(
-          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=desc&page=${this.page}&per_page=8`,
+          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=asc&page=${this.page}&per_page=8`,
           {
             headers: {
-              Authorization: "token fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
+              Authorization: process.env.GITHUB_token,
             },
           }
         )
@@ -59,7 +59,7 @@ export default {
         `https://api.github.com/users/${login}`,
         {
           headers: {
-            Authorization: "token fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
+            Authorization: process.env.GITHUB_token,
           },
         }
       );
