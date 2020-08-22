@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="header">
       <h1>Devfinder</h1>
       <p>Find relevant developers from Github</p>
@@ -43,7 +43,7 @@ export default {
           `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=asc&page=${this.page}&per_page=8`,
           {
             headers: {
-              Authorization: "fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
+              Authorization: "token fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
             },
           }
         )
@@ -59,7 +59,7 @@ export default {
         `https://api.github.com/users/${login}`,
         {
           headers: {
-            Authorization: "fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
+            Authorization: "token fb64a7582f3ff1b36fd3cfca68123eb76a923acf",
           },
         }
       );
@@ -84,9 +84,27 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 .header {
-  width: 50%;
-  margin: 0 auto;
+  margin-top: 10vh;
+  padding: 0.8rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 10vh;
+}
+.header h1 {
+  font-size: 2rem;
+}
+.header p {
+  font-size: 1.2rem;
+  font-weight: normal;
 }
 </style>

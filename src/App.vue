@@ -7,11 +7,10 @@
 <script>
 import Home from "./components/Home";
 
-
 export default {
   name: "App",
   components: {
-    Home
+    Home,
   },
 };
 </script>
@@ -20,6 +19,11 @@ export default {
 * {
   margin: 0;
   padding: 0;
-  font-family: inherit;
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  color: #ffffff;
+  background: #333333
 }
 </style>

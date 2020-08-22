@@ -1,6 +1,6 @@
 <template>
   <a :href="card.html_url" target="_blank">
-    <div class="card" v-if="card">
+    <div class="card" v-if="Object.keys(card).length > 0">
       <p>{{card.name}}</p>
       <img :src="card.avatar_url" />
       <span>{{card.bio}}</span>
@@ -19,7 +19,7 @@ export default {
       card: {},
     };
   },
-  async mounted() {
+  async created() {
     this.card = await this.setCardInfo(this.username);
   },
 };
@@ -29,6 +29,7 @@ export default {
 .card {
     padding: 20px;
     margin: 20px;
-    background-color: grey;
+    background-color: #ffffff;
+    color: #333333;
 }
 </style>
