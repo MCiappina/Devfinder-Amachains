@@ -119,4 +119,27 @@ button:hover {
   color: #ffffff;
   background: #0275d8;
 }
+@media only screen and (max-width: 845px){
+  input[type="text"]{
+    width: 50%;
+    align-self: center;
+  }
+  form {
+    margin-top: 5vh;
+  }
+  form p {
+    align-self: center;
+  }
+  .btn-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .search-results {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 2vh;
+    width: 50%;
+  }
+
+}
 </style>

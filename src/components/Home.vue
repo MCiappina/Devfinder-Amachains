@@ -129,4 +129,14 @@ export default {
   font-size: 1.2rem;
   font-weight: normal;
 }
+@media only screen and (max-width: 845px){
+  .logo {
+    display: none;
+  }
+  .header {
+    margin-top: 15vh;
+    height: 10vh;
+  }
+
+}
 </style>
