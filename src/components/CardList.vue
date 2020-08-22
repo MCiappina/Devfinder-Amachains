@@ -23,4 +23,10 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+@media only screen and (max-width: 845px){
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 </style>

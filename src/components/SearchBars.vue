@@ -9,12 +9,13 @@
     </form>
     <div class="btn-container" v-if="searchResults">
       <div class="pagination">
-        <button @click="handlePrevious">PREVIOUS</button>
-        <button @click="handleNext">NEXT</button>
+        <button class="previous" v-if="this.page !== 1" @click="handlePrevious">PREVIOUS</button>
+        <button class="next" v-if="this.page < this.maxPages" @click="handleNext">NEXT</button>
       </div>
       <button @click="handleToggle">Followers {{this.sortArrow}}</button>
     </div>
-    <p class="search-results" v-if="searchResults">{{searchResults || 0}} Total Results</p>
+    <p class="search-results" v-if="searchResults">{{searchResults}} Total Results</p>
+    <p class="search-results" v-if="!searchResults && submitted">0 Total Results</p>
   </div>
 </template>
 
@@ -25,11 +26,13 @@ export default {
     return {
       language: "",
       location: "",
+      submitted: false
     };
   },
   methods: {
     onSubmit(e) {
       e.preventDefault();
+      this.submitted = !this.submitted;
       this.resetPage();
       this.fetchLogins(this.language, this.location);
     },
@@ -55,6 +58,8 @@ export default {
     "resetPage",
     "toggleSort",
     "sortArrow",
+    "page",
+    "maxPages"
   ],
 };
 </script>

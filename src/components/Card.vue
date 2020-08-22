@@ -54,6 +54,10 @@ a {
   border-radius: 4px;
   color: #333333; 
 }
+.card:hover {
+  background: #0275d8;
+  color: #F5F5F5;
+}
 .card-header {
   padding: 1rem;
   font-size: 1rem;
@@ -80,7 +84,6 @@ a {
 }
 .card-info h5{
   margin: 0 10px;
-  color: #014C8C;
 }
 img {
   width: 100%;

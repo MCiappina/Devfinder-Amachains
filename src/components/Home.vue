@@ -14,6 +14,8 @@
         :toggleSort="toggleSort"
         :searchResults="searchResults"
         :sortArrow="sortArrow"
+        :page="page"
+        :maxPages="maxPages"
       />
       <CardList :loginList="loginList" :setCardInfo="setCardInfo" />
     </div>
@@ -31,6 +33,7 @@ export default {
     return {
       loginList: [],
       page: 1,
+      maxPages: undefined,
       searchResults: undefined,
       sortOrder: "asc",
       sortArrow: "↑",
@@ -53,7 +56,9 @@ export default {
           }
         )
         .then((res) => {
+          console.log(res.data.items);
           this.searchResults = res.data.total_count;
+          this.maxPages = this.searchResults / 8;
           this.loginList = res.data.items.map((item) => {
             return { login: item.login, id: item.id };
           });
@@ -74,8 +79,7 @@ export default {
 
     // Pagination methods
     nextPage() {
-      const maxPages = this.searchResults / 8;
-      if (this.page < maxPages) this.page++;
+      if (this.page < this.maxPages) this.page++;
     },
     previousPage() {
       if (this.page > 1) {
