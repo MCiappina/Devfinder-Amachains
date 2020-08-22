@@ -36,6 +36,7 @@ export default {
     CardList,
   },
   methods: {
+    // HTTP Request Methods
     fetchLogins(language, location) {
       axios
         .get(
@@ -47,7 +48,6 @@ export default {
           }
         )
         .then((res) => {
-          console.log(res.data);
           this.searchResults = res.data.total_count;
           this.loginList = res.data.items.map((item) => {
             return { login: item.login, id: item.id };
