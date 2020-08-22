@@ -7,11 +7,14 @@
       <input type="text" v-model="location" placeholder="Type the desired location" required />
       <input type="submit" value="FIND" />
     </form>
-    <div class="buttons" v-if="searchResults">
-      <button @click="handlePrevious">PREVIOUS</button>
-      <button @click="handleNext">NEXT</button>
-      <p v-if="searchResults">{{searchResults || 0}} Total Results</p>
+    <div class="btn-container" v-if="searchResults">
+      <div class="pagination">
+        <button @click="handlePrevious">PREVIOUS</button>
+        <button @click="handleNext">NEXT</button>
+      </div>
+      <button @click="handleToggle">Followers {{this.sortArrow}}</button>
     </div>
+    <p class="search-results" v-if="searchResults">{{searchResults || 0}} Total Results</p>
   </div>
 </template>
 
@@ -38,6 +41,11 @@ export default {
       this.previousPage();
       this.fetchLogins(this.language, this.location);
     },
+    handleToggle() {
+      this.toggleSort();
+      this.resetPage();
+      this.fetchLogins(this.language, this.location);
+    },
   },
   props: [
     "fetchLogins",
@@ -45,6 +53,8 @@ export default {
     "nextPage",
     "previousPage",
     "resetPage",
+    "toggleSort",
+    "sortArrow",
   ],
 };
 </script>
@@ -84,7 +94,12 @@ input[type="submit"] {
   cursor: pointer;
   outline: none;
 }
-.buttons {
+.btn-container {
+  margin: 0 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+.search-results {
   margin: 0 4rem;
 }
 button {
@@ -92,7 +107,7 @@ button {
   border: 1px solid #eceeef;
   box-sizing: border-box;
   border-radius: 10px;
-  color: #0275D8;
+  color: #0275d8;
   margin: 1rem 1rem 0.4rem 0;
   padding: 0.4rem;
   font-size: 0.7rem;
@@ -102,6 +117,6 @@ button {
 }
 button:hover {
   color: #ffffff;
-  background: #0275D8;
+  background: #0275d8;
 }
 </style>

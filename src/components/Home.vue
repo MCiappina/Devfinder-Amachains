@@ -8,10 +8,12 @@
     <div class="main">
       <SearchBars
         :fetchLogins="fetchLogins"
-        :searchResults="searchResults"
         :nextPage="nextPage"
         :previousPage="previousPage"
         :resetPage="resetPage"
+        :toggleSort="toggleSort"
+        :searchResults="searchResults"
+        :sortArrow="sortArrow"
       />
       <CardList :loginList="loginList" :setCardInfo="setCardInfo" />
     </div>
@@ -30,6 +32,8 @@ export default {
       loginList: [],
       page: 1,
       searchResults: undefined,
+      sortOrder: "asc",
+      sortArrow: "↑",
     };
   },
   components: {
@@ -41,10 +45,10 @@ export default {
     fetchLogins(language, location) {
       axios
         .get(
-          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=desc&page=${this.page}&per_page=8`,
+          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=${this.sortOrder}&page=${this.page}&per_page=8`,
           {
             headers: {
-              "Authorization": process.env.VUE_APP_GITHUB_TOKEN,
+              Authorization: process.env.VUE_APP_GITHUB_TOKEN,
             },
           }
         )
@@ -53,14 +57,15 @@ export default {
           this.loginList = res.data.items.map((item) => {
             return { login: item.login, id: item.id };
           });
-        }).catch(err => console.log(err));
+        })
+        .catch((err) => console.log(err));
     },
     async setCardInfo(login) {
       const response = await axios.get(
         `https://api.github.com/users/${login}`,
         {
           headers: {
-            "Authorization": process.env.VUE_APP_GITHUB_TOKEN,
+            Authorization: process.env.VUE_APP_GITHUB_TOKEN,
           },
         }
       );
@@ -80,12 +85,22 @@ export default {
     resetPage() {
       this.page = 1;
     },
+    //Toggle Method
+    toggleSort() {
+      if (this.sortOrder === "asc") {
+        this.sortOrder = "desc";
+        this.sortArrow = "↓";
+      } else {
+        this.sortOrder = "asc";
+        this.sortArrow = "↑";
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
-.main-container{
+.main-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
