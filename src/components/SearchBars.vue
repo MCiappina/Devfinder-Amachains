@@ -84,6 +84,10 @@ input[type="submit"] {
   cursor: pointer;
   outline: none;
 }
+.buttons {
+  margin: 0 2rem;
+
+}
 button {
   background: #ffffff;
   border: 1px solid #eceeef;

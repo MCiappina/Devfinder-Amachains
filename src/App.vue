@@ -20,10 +20,12 @@ export default {
   margin: 0;
   padding: 0;
   font-family: Roboto;
-  font-size: 20px;
   font-style: normal;
   font-weight: normal;
-  color: #ffffff;
-  background: #333333
+}
+.app {
+  height: 100vh;
+  width: 100vw;
+  background: #333333;
 }
 </style>

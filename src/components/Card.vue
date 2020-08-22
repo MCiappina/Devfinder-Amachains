@@ -1,11 +1,23 @@
 <template>
   <a :href="card.html_url" target="_blank">
     <div class="card" v-if="Object.keys(card).length > 0">
-      <p>{{card.name}}</p>
-      <img :src="card.avatar_url" />
-      <span>{{card.bio}}</span>
-      <h5>{{card.followers}} Followers</h5>
-      <h5>{{card.public_repos}} Repositories</h5>
+      <div class="card-header">
+        <p>{{card.name || 'Unnamed User'}}</p>
+      </div>
+      <div class="card-image">
+        <img :src="card.avatar_url" />
+      </div>
+      <div class="card-location">
+        <span>{{card.location}}</span>
+      </div>
+      <div class="card-bio">
+        <span>{{card.bio}}</span>
+      </div>
+
+      <div class="card-info">
+        <h5>{{card.followers}} Followers</h5>
+        <h5>{{card.public_repos}} Repositories</h5>
+      </div>
     </div>
   </a>
 </template>
@@ -26,15 +38,35 @@ export default {
 </script>
 
 <style scoped>
+a {
+  text-decoration: none;
+}
 .card {
-    margin: 20px;
-    background-color: #ffffff;
-    color: #333333;
-    width: 7rem;
-    height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  background-color: #ffffff;
+  width: 13rem;
+  height: 20rem;
+  text-decoration: none;
+}
+.card-header {
+  color: #333333; 
+  padding: 1rem;
+  font-size: 1rem;
+}
+.card-image {
+  width: 100%;
+  height: auto;
+}
+.card-bio {
+  color: #333333; 
+  padding: 1rem;
+  font-size: 1rem;
 }
 img {
-    max-width: 100px;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 </style>
