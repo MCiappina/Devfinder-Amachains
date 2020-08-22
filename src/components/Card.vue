@@ -80,6 +80,7 @@ a {
 }
 .card-info h5{
   margin: 0 10px;
+  color: #014C8C;
 }
 img {
   width: 100%;
