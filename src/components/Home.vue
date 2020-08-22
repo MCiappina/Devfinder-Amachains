@@ -22,6 +22,9 @@ import CardList from "./CardList";
 import SearchBars from "./SearchBars";
 import axios from "axios";
 
+const GITHUB_token = process.env.VUE_APP_GITHUB_TOKEN;
+console.log(GITHUB_token);
+
 export default {
   name: "Home",
   data() {
@@ -40,7 +43,7 @@ export default {
     fetchLogins(language, location) {
       axios
         .get(
-          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=asc&page=${this.page}&per_page=8`,
+          `https://api.github.com/search/users?q=location:${location}+language:${language}&sort=followers&order=desc&page=${this.page}&per_page=8`,
           {
             headers: {
               Authorization: process.env.GITHUB_token,
@@ -59,7 +62,7 @@ export default {
         `https://api.github.com/users/${login}`,
         {
           headers: {
-            Authorization: process.env.GITHUB_token,
+            "Authorization": GITHUB_token,
           },
         }
       );
@@ -95,7 +98,7 @@ export default {
   color: #ffffff;
 }
 .header {
-  margin-top: 10vh;
+  margin-top: 20vh;
   padding: 0.8rem;
   text-align: center;
   display: flex;

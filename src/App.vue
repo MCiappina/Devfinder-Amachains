@@ -6,6 +6,7 @@
 
 <script>
 import Home from "./components/Home";
+require('dotenv').config();
 
 export default {
   name: "App",

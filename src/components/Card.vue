@@ -44,11 +44,12 @@ a {
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   margin: 20px;
   background: #F5F5F5;
-  width: 13rem;
-  height: 24rem;
+  width: 16rem;
+  height: 26rem;
   text-decoration: none;
   border-radius: 4px;
   color: #333333; 
@@ -60,20 +61,28 @@ a {
 .card-image {
   width: 100%;
   height: auto;
+  border-top: 1px solid #333333;
 }
 .card-location {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding: 4px;
+  font-weight: bold;
 }
 .card-bio {
   padding: 10px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  text-align: center;
 }
 .card-info {
-  padding: 4px;
+  display:flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.card-info h5{
+  margin: 0 10px;
 }
 img {
   width: 100%;
-  height: auto;
+  height: 200px;
 }
 </style>

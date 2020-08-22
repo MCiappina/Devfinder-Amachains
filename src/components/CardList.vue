@@ -16,7 +16,7 @@ export default {
 
 <style>
 .container {
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
